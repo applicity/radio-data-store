@@ -1,0 +1,12 @@
+INSERT INTO NUMBERS VALUES (null, 'Studio 1', '100', false);
+INSERT INTO NUMBERS VALUES (null, 'Studio 2', '200', false);
+INSERT INTO NUMBERS VALUES (null, 'Sam', '907917123300', false);
+INSERT INTO NUMBERS VALUES (null, 'Test Number 1', '901932874433', false);
+INSERT INTO NUMBERS VALUES (null, 'Test Number 2', '901932874433', false);
+INSERT INTO NUMBERS VALUES (null, 'Test Number 3', '901932874433', false);
+INSERT INTO NUMBERS VALUES (null, 'Test Number 4', '901932874433', false);
+INSERT INTO NUMBERS VALUES (null, 'Test Number 5', '901932874433', false);
+INSERT INTO NUMBERS VALUES (null, 'Test Number 6', '901932874433', false);
+INSERT INTO NUMBERS VALUES (null, 'Test Number 7', '901932874433', false);
+INSERT INTO NUMBERS VALUES (null, 'Test Number 8', '901932874433', false);
+INSERT INTO NUMBERS VALUES (null, 'Test Number 9', '901932874433', false);
