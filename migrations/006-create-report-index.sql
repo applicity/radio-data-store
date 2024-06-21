@@ -1,0 +1,1 @@
+create INDEX if not exists reported on report (reported desc)

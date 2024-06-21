@@ -6,7 +6,10 @@ import getDb from './data';
 
 // import generateTodoModel from "./schema/models";
 // import dbConnection from "./db/connection";
-import cors from "cors"
+import cors from "cors";
+
+const PORT = process.env.PORT || 4000;
+
 const startApolloServer = async () => {
   // await dbConnection()
   //   .then((result) => console.log(result))
@@ -40,8 +43,8 @@ const startApolloServer = async () => {
     res.send("Welcome Todo App");
     res.end();
   });
-  await new Promise((resolve) => app.listen({ port: 4000 }, resolve));
-  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
+  await new Promise((resolve) => app.listen({ port: PORT }, resolve));
+  console.log(`🚀 Server ready at http://localhost:${ PORT }${server.graphqlPath}`);
   return { server, app };
 };
 startApolloServer();

@@ -3,5 +3,7 @@ CREATE TABLE report (
   radio TEXT,
   volume INTEGER,
   status TEXT,
+  state TEXT,
+  uri TEXT,
   reported int
 );

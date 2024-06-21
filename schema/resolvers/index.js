@@ -10,7 +10,23 @@ const resolvers = {
 
     getRadios: async (parent, args, context) => {
       return context.db.allRadios();
+    },
+    getRadioCount: async (parent, args, context) => {
+      return context.db.getRadioCount();
+    },
+
+    getLatestReport: async (parent, args, context) => {
+      return context.db.getLatestReport()
+    },
+    
+    getRadioTimes: async (parent, args, context) => {
+      console.log(args);
+      return context.db.getRadioTimes(args.params);
+    },
+    getRadioDataForPeriod: async (parent, args, context) => {
+      return context.db.getRadioDataForPeriod(args.params);
     }
+
   },
   Mutation: {
     addPhoneNumber: async (parent, args, context) => {
@@ -30,8 +46,9 @@ const resolvers = {
     },
     addRadioReport: async (parent, args, context) => {
       const { report } = args;
-      const { name, volume, status, ip } = report;
-      return context.db.addRadioReport(name, ip, volume, status);
+      const { name, radio_type, ip, volume, status, state, uri } = report;
+      //name, radioType, ip, volume, status, state
+      return context.db.addRadioReport(name, radio_type, ip, volume, status, state, uri);
     },
     generatePhoneBookXML: async (parent, args, context) => {
       const numbers = await context.db.allNumbers();
