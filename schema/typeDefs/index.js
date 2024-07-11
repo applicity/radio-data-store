@@ -18,6 +18,7 @@ const typeDefs = gql`
 
  type ReportDetail {
    date: String
+   datetime: String
    radio: String
    volume: Int
    status: String

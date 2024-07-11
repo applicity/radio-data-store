@@ -86,7 +86,7 @@ const getDb = async () => {
   const getLatestReport = () => {
 
     return new Promise((res, rej) => {
-      db.all("select *, date(reported, 'unixepoch') as date from report ORDER BY reported DESC limit 1", (err, rows) => {
+      db.all("select *, date(reported, 'unixepoch') as date, datetime(reported, 'unixepoch', 'localtime') as datetime from report ORDER BY reported DESC limit 1", (err, rows) => {
         if (err) {
           console.error(err)
           return rej()
