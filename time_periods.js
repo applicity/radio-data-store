@@ -54,6 +54,6 @@ db.run(`INSERT INTO report_periods(type, display, year, month, day, dotw, hour, 
 
 }
 
-// create_year_periods();
+create_year_periods();
 create_hour_periods();
 // add_period(['daily', start.year(), start.month() + 1, start.date(), start.unix(), end.unix() ]);

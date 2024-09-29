@@ -151,13 +151,13 @@ const getDb = async () => {
 
   const getRadioDataForPeriod = ({ periodName, groupBy, playing = false }) => {
 
-    console.log('PeriodName', periodName);
+    // console.log('PeriodName', periodName);
     const [start, end ] = getRangeFromPeriodName(periodName);
-    console.log('Period', { start, end});
+    // console.log('Period', { start, end});
 
     const periodType = 'daily';
 
-    console.log({groupBy});
+    // console.log({groupBy});
     const group = groupBy || 'display';
 
     const sql = `select ${groupBy ? groupBy + ' as display, ' : ''} count(distinct radio) as count
@@ -169,7 +169,7 @@ const getDb = async () => {
     ${ groupBy ? 'group by ' + groupBy : ''}
     order by rp.start`;
 
-    console.log(sql);
+    // console.log(sql);
 
     return new Promise((res, rej) => {
       db.all(sql, [periodType, start, end], function(err, rows) {
