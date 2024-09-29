@@ -80,6 +80,7 @@ const typeDefs = gql`
     getRadioCount: RadioCount
     getRadioTimes(params: timeQueryProperties): [RadioTimeResult]
     getRadioDataForPeriod(params: dataPeriodProperties): [datePeriodResult]
+    getTransitionDataForPeriod(params: dataPeriodProperties): [datePeriodResult]
     getLatestReport: ReportDetail
   }
 

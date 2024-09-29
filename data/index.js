@@ -148,6 +148,7 @@ const getDb = async () => {
     return [start.unix(), end.unix()]
   }
 
+
   const getRadioDataForPeriod = ({ periodName, groupBy, playing = false }) => {
 
     console.log('PeriodName', periodName);
@@ -172,6 +173,41 @@ const getDb = async () => {
 
     return new Promise((res, rej) => {
       db.all(sql, [periodType, start, end], function(err, rows) {
+        if (err) return rej(err);
+
+        return res(rows);
+      })
+
+    })
+  }
+
+
+  const getTransitionDataForPeriod = ({ periodName, groupBy, transition_type = null }) => {
+
+    console.log('PeriodName', periodName);
+    const [start, end ] = getRangeFromPeriodName(periodName);
+    console.log('Period', { start, end});
+
+    const periodType = 'daily';
+
+    console.log({groupBy});
+    const group = groupBy || 'display';
+
+    const sql = `select ${groupBy ? groupBy + ' as display, ' : ''} count(distinct radio) as count
+    from report_periods rp
+    inner join transition r
+    on r.reported >= rp.start and r.reported < rp.end
+    where rp.type = ? and reported >= ? and reported < ?
+    ${ transition_type ? " and r.type = ? " : ''}
+    ${ playing ? " and state = 'PLAYING' and volume > 10 ": ''}
+    ${ groupBy ? 'group by ' + groupBy : ''}
+
+    order by rp.start`;
+
+    console.log(sql);
+
+    return new Promise((res, rej) => {
+      db.all(sql, transition_type ? [periodType, start, end, transition_type] : [periodType, start, end], function(err, rows) {
         if (err) return rej(err);
 
         return res(rows);
@@ -284,7 +320,8 @@ const getDb = async () => {
 
   }
 
-  return { allNumbers, addPhoneNumber, deletePhoneNumber, updatePhoneNumber, allRadios, addRadioReport, getRadioCount, getLatestReport, getRadioTimes, getRadioDataForPeriod }
+  return { allNumbers, addPhoneNumber, deletePhoneNumber, updatePhoneNumber, allRadios, addRadioReport, getRadioCount, 
+    getLatestReport, getRadioTimes, getRadioDataForPeriod, getTransitionDataForPeriod }
 }
 
 export default getDb;
