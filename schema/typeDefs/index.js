@@ -49,6 +49,7 @@ const typeDefs = gql`
    status: String
    state: String
    uri: String
+   rssi: String
  }
 
  input timeQueryProperties {
