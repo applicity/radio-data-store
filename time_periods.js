@@ -3,7 +3,7 @@ const moment = require('moment');
 
 const db = new sqlite3.Database('./app.sqllite');
 
-const START = '2024-01-01'
+const START = '2025-01-01'
 
 
 const create_year_periods = () => {

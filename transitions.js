@@ -35,7 +35,7 @@ const all_radios = async () => {
 
 
   await new Promise((res, rej) => {
-    db.all("select distinct radio from report", async (err, rows) => {
+    db.all("select distinct radio from report where radio like 'W%'", async (err, rows) => {
       // console.log('Rows', rows)
       for (const row of rows) {
         const { radio } = row
