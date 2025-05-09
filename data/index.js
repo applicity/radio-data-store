@@ -12,7 +12,7 @@ const dbFile = 'app.sqllite';
 const connection = {
   path: dbFile,
   options: {
-      memory: false,
+      // memory: false,
       fileMustExist: false,
       timeout: 5000,
       verbose: null // function or null

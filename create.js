@@ -8,7 +8,7 @@ const driver = sqliteDriver({
     connection: {
         path: 'app.sqlite',
         options: {
-            memory: false,
+            // memory: false,
             fileMustExist: false,
             timeout: 5000,
             verbose: null // function or null
